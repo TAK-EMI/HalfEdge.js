@@ -1,7 +1,7 @@
 module.exports = {
 	mode: "development",
 	entry: {
-		HalfEdge: "./src/ts/index.ts",
+		HalfEdge: "./src/index.ts",
 	},
 	output: {
 		path: `${__dirname}/dist`,
