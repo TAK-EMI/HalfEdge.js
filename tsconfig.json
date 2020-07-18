@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "ES2015",
+		"lib": [
+			"ES2019",
+			"DOM"
+		],
+		"allowJs": false,
+		"newLine": "lf",
+		"declaration": true,
+		"declarationDir": "./dist/dec",
+		"sourceMap": true,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"composite": true,
+		"removeComments": true,
+		"diagnostics": true,
+		"strict": true,
+		"skipDefaultLibCheck": ,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": [
+		"./src/**/*.ts"
+	]
+}
