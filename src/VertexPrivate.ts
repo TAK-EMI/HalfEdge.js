@@ -8,6 +8,10 @@ export default class VertexPrivate extends BaseElement {
 	constructor(id: number, pos: Array<number> = [0, 0, 0]) {
 		super(id);
 
-		this.position = pos;
+		if (pos.length < 3) {
+			throw new Error('Argument array size is should be 3.');
+		}
+
+		this.position = pos.slice(0, 3);
 	}
 }

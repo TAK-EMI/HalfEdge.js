@@ -51,6 +51,7 @@
 		},
 		"testMatch": [
 			"**/tests/**/*.test.ts"
-		]
+		],
+		"collectCoverage": true
 	}
 }

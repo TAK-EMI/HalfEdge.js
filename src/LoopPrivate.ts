@@ -18,11 +18,11 @@ export default class LoopPrivate extends BaseElement {
 		super(id);
 
 		if (list.length < 3) {
-			throw 'Loop is should be 3 or 4 Halfs.';
+			throw new Error('Loop is should be 3 or 4 Halfs.');
 		} else if (list.length === 3 || list.length === 4) {
 			this.halfs = list;
 		} else {
-			this.halfs = list.slice(3);
+			this.halfs = list.slice(0, 4);
 		}
 	}
 }
