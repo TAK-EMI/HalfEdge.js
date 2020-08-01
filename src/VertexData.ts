@@ -20,7 +20,7 @@ export default class VertexData extends BaseElementData {
 		}
 	}
 	public delete(v: Vertex): boolean {
-		const value = this.getValue(v);
+		const value = this.getValue(v.id);
 		if (value === null) {
 			return false;
 		}
@@ -29,25 +29,12 @@ export default class VertexData extends BaseElementData {
 		return true;
 	}
 
-	public exist(id: number): boolean;
-	public exist(v: Vertex): boolean;
-	public exist(v: Vertex | number): boolean {
-		if (v instanceof Vertex) {
-			return super.exist(v as BaseElement);
-		} else {
-			return super.exist(v as number);
-		}
+	public exist(v: Vertex): boolean {
+		return super.exist(v as BaseElement);
 	}
 
-	public getVertex(id: number): Vertex | null;
-	public getVertex(v: Vertex): Vertex | null;
-	public getVertex(v: Vertex | number): Vertex | null {
-		if (v instanceof Vertex) {
-			const ret = super.getValue(v as BaseElement);
-			return ret === null ? null : (ret as Vertex);
-		} else {
-			const ret = super.getValue(v as number);
-			return ret === null ? null : (ret as Vertex);
-		}
+	public getVertex(id: number): Vertex | null {
+		const ret = super.getValue(id);
+		return ret === null ? null : (ret as Vertex);
 	}
 }

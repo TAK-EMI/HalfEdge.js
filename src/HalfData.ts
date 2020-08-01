@@ -23,7 +23,7 @@ export default class HalfData extends BaseElementData {
 		}
 	}
 	public delete(h: Half): boolean {
-		const value = this.getValue(h);
+		const value = this.getValue(h.id);
 		if (value === null) {
 			return false;
 		}
@@ -32,25 +32,12 @@ export default class HalfData extends BaseElementData {
 		return true;
 	}
 
-	public exist(id: number): boolean;
-	public exist(h: Half): boolean;
-	public exist(h: Half | number): boolean {
-		if (h instanceof Half) {
-			return super.exist(h as BaseElement);
-		} else {
-			return super.exist(h as number);
-		}
+	public exist(h: Half): boolean {
+		return super.exist(h as BaseElement);
 	}
 
-	public getHalf(id: number): Half | null;
-	public getHalf(h: Half): Half | null;
-	public getHalf(h: Half | number): Half | null {
-		if (h instanceof Half) {
-			const ret = super.getValue(h as BaseElement);
-			return ret === null ? null : (ret as Half);
-		} else {
-			const ret = super.getValue(h as number);
-			return ret === null ? null : (ret as Half);
-		}
+	public getHalf(id: number): Half | null {
+		const ret = super.getValue(id);
+		return ret === null ? null : (ret as Half);
 	}
 }

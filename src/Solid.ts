@@ -1,6 +1,6 @@
-import DataAccess from './DataAccess';
+import Modify from './Modify';
 
-export default class Solid extends DataAccess {
+export default class Solid extends Modify {
 	constructor() {
 		super();
 	}

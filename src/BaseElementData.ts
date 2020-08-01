@@ -7,41 +7,19 @@ export default class BaseElementData {
 	public get first(): BaseElement | null {
 		return this.values.length === 0 ? null : this.values[0];
 	}
+	public get last(): BaseElement | null {
+		return this.values.length === 0 ? null : this.values[this.values.length - 1];
+	}
 	public get newID(): number {
 		return this.id_max++;
 	}
 
-	/**
-	 * 要素の存在確認
-	 *
-	 * @param value ID or BaseElement
-	 */
-	public exist(id: number): boolean;
-	public exist(elem: BaseElement): boolean;
-	public exist(value: number | BaseElement): boolean {
-		if (value instanceof BaseElement) {
-			return this.getValue(value as BaseElement) !== null;
-		} else {
-			return this.getValue(value as number) !== null;
-		}
+	public exist(elem: BaseElement): boolean {
+		const find = this.values.filter((v) => v.uuid === elem.uuid);
+		return find.length > 0;
 	}
-
-	/**
-	 * 要素取得
-	 *
-	 * @param value ID or BaseElement
-	 */
-	protected getValue(id: number): BaseElement | null;
-	protected getValue(elem: BaseElement): BaseElement | null;
-	protected getValue(value: number | BaseElement): BaseElement | null {
-		let find = null;
-
-		if (value instanceof BaseElement) {
-			find = this.values.filter((v) => v.uuid === value.uuid);
-		} else {
-			find = this.values.filter((v) => v.id === value);
-		}
-
+	protected getValue(id: number): BaseElement | null {
+		const find = this.values.filter((v) => v.id === id);
 		return find && find.length > 0 ? find[0] : null;
 	}
 

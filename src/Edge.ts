@@ -25,4 +25,13 @@ export default class Edge extends BaseElement {
 	public existHalf(h: Half): boolean {
 		return this._first.uuid === h.uuid || this._second.uuid === h.uuid;
 	}
+	public getMateHalf(h: Half): Half | null {
+		if (this._first === h) {
+			return this._second;
+		} else if (this._second === h) {
+			return this._first;
+		} else {
+			return null;
+		}
+	}
 }

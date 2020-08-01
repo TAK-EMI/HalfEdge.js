@@ -26,6 +26,10 @@ export default class Half extends BaseElement {
 		return this._next;
 	}
 
+	public get hasLoop(): boolean {
+		return this._loop !== null;
+	}
+
 	constructor(id: number, v: Vertex) {
 		super(id);
 

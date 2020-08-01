@@ -22,7 +22,7 @@ export default class EdgeData extends BaseElementData {
 		}
 	}
 	public delete(e: Edge): boolean {
-		const value = this.getValue(e);
+		const value = this.getValue(e.id);
 		if (value === null) {
 			return false;
 		}
@@ -31,25 +31,12 @@ export default class EdgeData extends BaseElementData {
 		return true;
 	}
 
-	public exist(id: number): boolean;
-	public exist(e: Edge): boolean;
-	public exist(e: Edge | number): boolean {
-		if (e instanceof Edge) {
-			return super.exist(e as BaseElement);
-		} else {
-			return super.exist(e as number);
-		}
+	public exist(e: Edge): boolean {
+		return super.exist(e as BaseElement);
 	}
 
-	public getEdge(id: number): Edge | null;
-	public getEdge(e: Edge): Edge | null;
-	public getEdge(e: Edge | number): Edge | null {
-		if (e instanceof Edge) {
-			const ret = super.getValue(e as BaseElement);
-			return ret === null ? null : (ret as Edge);
-		} else {
-			const ret = super.getValue(e as number);
-			return ret === null ? null : (ret as Edge);
-		}
+	public getEdge(id: number): Edge | null {
+		const ret = super.getValue(id);
+		return ret === null ? null : (ret as Edge);
 	}
 }

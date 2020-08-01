@@ -23,7 +23,7 @@ export default class LoopData extends BaseElementData {
 		}
 	}
 	public delete(l: Loop): boolean {
-		const value = this.getValue(l);
+		const value = this.getValue(l.id);
 		if (value === null) {
 			return false;
 		}
@@ -32,25 +32,12 @@ export default class LoopData extends BaseElementData {
 		return true;
 	}
 
-	public exist(id: number): boolean;
-	public exist(l: Loop): boolean;
-	public exist(l: Loop | number): boolean {
-		if (l instanceof Loop) {
-			return super.exist(l as BaseElement);
-		} else {
-			return super.exist(l as number);
-		}
+	public exist(l: Loop): boolean {
+		return super.exist(l as BaseElement);
 	}
 
-	public getLoop(id: number): Loop | null;
-	public getLoop(l: Loop): Loop | null;
-	public getLoop(l: Loop | number): Loop | null {
-		if (l instanceof Loop) {
-			const ret = super.getValue(l as BaseElement);
-			return ret === null ? null : (ret as Loop);
-		} else {
-			const ret = super.getValue(l as number);
-			return ret === null ? null : (ret as Loop);
-		}
+	public getLoop(id: number): Loop | null {
+		const ret = super.getValue(id);
+		return ret === null ? null : (ret as Loop);
 	}
 }
